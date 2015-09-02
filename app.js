@@ -2,9 +2,14 @@
 var express = require('express'),
 	app = express(),
 	bodyParser = require('body-parser'),
-	methodOverride = require('method-override');
+	methodOverride = require('method-override'),
+	engine = require('ejs-mate');
 
-// set view engine
+// use ejs-locals for all ejs templates: 
+app.engine('ejs', engine);
+ 
+app.set('views',__dirname + '/views');
+// set view engine so you can render('index') 
 app.set('view engine', 'ejs');
 // set static directory to public
 app.use(express.static('public'));
@@ -31,17 +36,17 @@ var puppies = [
 
 // "GET" request to "/" path runs the function below
 app.get('/', function (req, res) {
-	res.render('puppies/index', {puppies: puppies});
+	res.render('puppies/index', {puppies: puppies, title: "Puppies"});
 });
 
 // list all puppies
 app.get('/puppies', function (req, res) {
-	res.render('puppies/index', {puppies: puppies});
+	res.render('puppies/index', {puppies: puppies, title: "Puppies"});
 });
 
 // new puppy form
 app.get('/puppies/new', function (req, res) {
-	res.render('puppies/new');
+	res.render('puppies/new', {title: "Add puppy"});
 });
 
 // post new puppy
@@ -58,7 +63,7 @@ app.post('/puppies', function (req, res) {
 // show puppy by id
 app.get('/puppies/:id', function (req, res) {
 	var puppy = puppies[req.params.id-1];
-	res.render('puppies/show', {puppy: puppy});
+	res.render('puppies/show', {puppy: puppy, title: puppy.name});
 });
 
 // start the server

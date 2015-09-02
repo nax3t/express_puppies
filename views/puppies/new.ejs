@@ -1,28 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Add Puppy</title>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-	
-	<!-- jQuery -->
-	<script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
-	
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</head>
-<body>
-	<!-- <form action="/books/?_method=post" method="POST"> -->
-	<form action="/puppies" method="POST">
-		<p><input type="text" name="name" placeholder="Name.."></p>
-		<p><input type="text" name="age" placeholder="Age.."></p>
-		<p><input type="text" name="img" placeholder="Image.."></p>
+<% layout('layout') -%>
+<form action="/puppies" method="POST">
+	<p><input type="text" name="name" placeholder="Name.."></p>
+	<p><input type="text" name="age" placeholder="Age.."></p>
+	<p><input type="text" name="img" placeholder="Image.."></p>
 
-		<button type="submit" class="btn btn-success">Add Puppy</button>
-	</form>
-</body>
-</html>
+	<button type="submit" class="btn btn-success">Add Puppy</button>
+</form>
